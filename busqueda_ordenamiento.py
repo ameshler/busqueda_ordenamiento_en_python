@@ -82,44 +82,54 @@ for sort_func in [bubble_sort, merge_sort, quick_sort]:
     resultado = sort_func(copia)
     fin = time.time()
     print(f"{sort_func.__name__} tomó {fin - inicio:.6f} segundos.")
+    print(f"Lista ordenada (primeros 10 valores): {resultado[:10]} ...")
 
+# Búsqueda
+# Generamos una lista ordenada con sorted() para analizar la busqueda independientemente de los métodos de ordenamiento
+lista_ordenada = sorted(lista)
 # Elegir tipo de búsqueda
-print("\n--- Búsqueda ---")
-while True:
-    tipo_busqueda = input("¿Desea buscar por posición (p) o por valor (v), o para salir (s) ? ").lower()
-    if tipo_busqueda == 's':
-            print("Saliendo...")
-            break
-
-    elif tipo_busqueda == 'p':
-        while True:
-            pos = int(input(f"\nIngrese una posición (0 a {tam - 1}): "))
-            if 0 <= pos < tam:
-                valor = lista[pos]
-                print(f"El valor en la posición {pos} es: {valor}")
+def busquedas(lis):
+    print("--- Búsqueda ---")
+    while True:
+        tipo_busqueda = input("¿Desea determinar el valor a buscar por posición (p), por valor (v), o para salir (s) ? ").lower()
+        if tipo_busqueda == 's':
+                print("Saliendo...")
                 break
-            else:
-                print("Posición fuera de rango.")
-    elif tipo_busqueda == 'v':
-        valor = int(input("\nIngrese el valor a buscar: "))
-    else:
-        print("Opción inválida. Ingrese 'p' para posición, 'v' para valor, o 's' para salir.") 
 
-    # Búsqueda lineal
-    t1 = time.time()
-    idx_lineal = busqueda_lineal(lista, valor)
-    t2 = time.time()
-    if idx_lineal != -1:
-        print(f"Búsqueda lineal: índice {idx_lineal}, tiempo: {t2 - t1:.6f} s")
-    else:
-        print(f"Búsqueda lineal: el valor {valor} no fue encontrado, tiempo: {t2 - t1:.6f} s")
+        elif tipo_busqueda == 'p':
+            while True:
+                pos = int(input(f"\nIngrese una posición (0 a {tam - 1}): "))
+                if 0 <= pos < tam:
+                    valor = lis[pos]
+                    print(f"El valor en la posición {pos} es: {valor}")
+                    break
+                else:
+                    print("Posición fuera de rango.")
+        elif tipo_busqueda == 'v':
+            valor = int(input("\nIngrese el valor a buscar: "))
+        else:
+            print("Opción inválida. Ingrese 'p' para posición, 'v' para valor, o 's' para salir.") 
+            exit()
+        # Búsqueda lineal(lista ordenada)
+        t1 = time.time()
+        idx_lineal = busqueda_lineal(lis, valor)
+        t2 = time.time()
+        if idx_lineal != -1:
+            print(f"Búsqueda lineal: índice {idx_lineal}, valor {valor}, tiempo: {t2 - t1:.6f} s")
+        else:
+            print(f"Búsqueda lineal: el valor {valor} no fue encontrado, tiempo: {t2 - t1:.6f} s")
 
-    # Búsqueda binaria (lista ordenada)
-    lista_ordenada = sorted(lista)
-    t3 = time.time()
-    idx_binaria = busqueda_binaria(lista_ordenada, valor)
-    t4 = time.time()
-    if idx_lineal != -1:
-        print(f"Búsqueda binaria: índice {idx_binaria}, tiempo: {t4 - t3:.6f} s")
-    else:
-        print(f"Búsqueda binaria: el valor {valor} no fue encontrado, , tiempo: {t4 - t3:.6f} s")
+        # Búsqueda binaria (lista ordenada)
+        # lista_ordenada = sorted(lista)
+        t3 = time.time()
+        idx_binaria = busqueda_binaria(lis, valor)
+        t4 = time.time()
+        if idx_binaria != -1:
+            print(f"Búsqueda binaria: índice {idx_binaria}, valor {valor},tiempo: {t4 - t3:.6f} s")
+        else:
+            print(f"Búsqueda binaria: el valor {valor} no fue encontrado, tiempo: {t4 - t3:.6f} s")
+
+print("\nBuscando con lista ordenada...")
+busquedas(lista_ordenada)
+print("\nBuscando con lista no ordenada...")
+busquedas(lista)

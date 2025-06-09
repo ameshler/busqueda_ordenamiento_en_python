@@ -1,5 +1,9 @@
 # Proyecto: Algoritmos de Búsqueda y Ordenamiento en Python
 
+**Alumnos**: Meshler Andrés - andessemanuel@gmail.com \Molina Martín - martindanielmolina@gmail.com
+**Materia**: Programación I
+**Profesora**: Julieta Trapé
+
 ## 📌 Descripción
 
 Este proyecto forma parte del Trabajo Integrador de la materia **Programación I** de la Tecnicatura Universitaria en Programación. Consiste en una investigación práctica sobre algoritmos clásicos de búsqueda y ordenamiento, implementados y evaluados en el lenguaje Python.
