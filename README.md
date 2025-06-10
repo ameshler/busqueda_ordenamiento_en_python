@@ -27,3 +27,6 @@ Este proyecto forma parte del Trabajo Integrador de la materia **Programación I
 - Python 3.11.9
 - Librerías estándar: `time`, `random`
 
+## 🛠️ Extras
+Link video: https://drive.google.com/file/d/1ffObdk8-fG939lKTF4El31GluuNiwWr1/view
+
